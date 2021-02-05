@@ -300,10 +300,21 @@ type DebugTest<
 
 type Test<RegExp extends string, Text extends string> = DebugTest<RegExp, Text>['isValid']
 
+
+
+
+
 type T1 = DebugTest<'a?(b(zz)*c)+(zy)+x', 'bzzzzzzcbcbczyx'>
+
+
+
 
 type T2 = Test<'a?(b(xy)*c)*c', 'abxyxycc'>
 
-type T3 = Test<'a?bc*x', 'bcccccx'>
+
+
+
+type T3 = Test<'(\\(\\.\\))*', '(.)(.)(.)'>
 
 // TODOs:
+// TODO: errors are not propagated down
