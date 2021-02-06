@@ -5,7 +5,7 @@ Bagged few features support RegEx engine written just by Typescript generics
 
 If you want to interactively play with the latest source code, just by copy `./index.ts` into `https://www.typescriptlang.org/play`
 
-This repository is just my fun project where I demonstrate power of typescript by writing Graphql parser in pure Type system.
+This repository is just my fun project where I demonstrate power of Typescript type-system to evaluate regEx statement in the static time (instead of the Javascript runtime).
 
 ## Preview
 
