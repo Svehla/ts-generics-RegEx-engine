@@ -37,5 +37,3 @@ Thanks to new features of Typescript 4.1.x we are able to parse a string into a 
 
 ## How does the RegEx engine work under the hood?
 [You can read More described architecture of programme in this dev.to article](https://dev.to/svehla/world-first-static-time-regex-engine-with-o-0-time-complexity-4k4e)
-
-## Preview
