@@ -1,3 +1,5 @@
+// Minimum TypeScript Version: 4.1
+
 // -------------------------------------------------------
 // ----------------- Math operations ---------------------
 // -------------------------------------------------------
@@ -283,7 +285,7 @@ type TestRegExp<RegExpAST, Text, Index = 0> = RegExpAST extends []
     : TestRegExp<Tail<RegExpAST>, Text, Index>
   : '!!! error!!!'
 
-type DebugTest<
+export type DebugTest<
   RegExp extends string,
   Text extends string,
   ParsedText = SplitText<Text>,
@@ -298,23 +300,8 @@ type DebugTest<
       : { isValid: false; errorLog: Res; info: 'string does not match till the end' }
     : { isValid: false; errorLog: Res }
 
-type Test<RegExp extends string, Text extends string> = DebugTest<RegExp, Text>['isValid']
+export type Test<RegExp extends string, Text extends string> = DebugTest<RegExp, Text>['isValid']
 
-
-
-
-
-type T1 = DebugTest<'a?(b(zz)*c)+(zy)+x', 'bzzzzzzcbcbczyx'>
-
-
-
-
-type T2 = Test<'a?(b(xy)*c)*c', 'abxyxycc'>
-
-
-
-
-type T3 = Test<'(\\(\\.\\))*', '(.)(.)(.)'>
 
 // TODOs:
 // TODO: errors are not propagated down

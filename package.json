@@ -1,0 +1,24 @@
+{
+  "name": "ts-generics-RegEx-engine",
+  "version": "0.0.1",
+  "description": "Bagged few features support RegEx engine written just by Typescript generics",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "dtslint . --localTs node_modules/typescript/lib --expectOnly"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Svehla/ts-generics-RegEx-engine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Svehla/ts-generics-RegEx-engine/issues"
+  },
+  "homepage": "https://github.com/Svehla/ts-generics-RegEx-engine#readme",
+  "dependencies": {
+    "dtslint": "^4.0.7",
+    "typescript": "^4.1.5"
+  }
+}
