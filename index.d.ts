@@ -119,7 +119,7 @@ type SplitText<T extends string> = T extends ''
 // Stack based parser inspired by this awesome source
 // > https://www.youtube.com/watch?v=u01jb8YN2Lw
 
-type TokenizeString<T> = T extends ''
+export type TokenizeString<T> = T extends ''
   ? []
   : T extends `\\${infer Rest}`
   ? // @ts-expect-error
@@ -129,7 +129,7 @@ type TokenizeString<T> = T extends ''
     [First, ...TokenizeString<Rest>]
   : T
 
-type ParseRegExTokens<T /*extends string[]*/, Stack extends any[] = [[]]> = T extends []
+export type ParseRegExTokens<T /*extends string[]*/, Stack extends any[] = [[]]> = T extends []
   ? Stack
   : Head<T> extends '.'
   ? ParseRegExTokens<Tail<T>, PushToLastItem<Stack, { type: 'wildcard'; quantifier: 'exactlyOne' }>>
