@@ -1,5 +1,5 @@
 {
-  "name": "ts-generics-RegEx-engine",
+  "name": "ts-generics-regex-engine",
   "version": "0.0.1",
   "description": "Bagged few features support RegEx engine written just by Typescript generics",
   "main": "index.js",

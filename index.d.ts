@@ -184,18 +184,6 @@ export type ParseRegExTokens<T /*extends string[]*/, Stack extends any[] = [[]]>
 type ParsedRegEx<T> = ParseRegExTokens<TokenizeString<T>>[0]
 
 // ------------- regex interpreter ----------------
-// type X = ApplyMultipleZeroOrMore<
-//   {
-//     type: 'groupElement';
-//     states: [
-//       { type: 'element'; value: "b"; quantifier: 'exactlyOne';},
-//       { type: 'element'; value: "c"; quantifier: 'exactlyOne';
-//     }];
-//     quantifier: "zeroOrMore";
-//   },
-//   SplitText<'xxabcbcx'>,
-//   3
-// >
 type ApplyMultipleZeroOrMore<
   // TODO: rename to Node
   State extends { value: any; type: any; states: any },
@@ -236,7 +224,7 @@ type StateMatchesStringAtIndex<
         : [false, Consumed]
       : // nested error ?
         [false, 0]
-    : never // 'error! should never happen'
+    : never 
 
 type TestRegExp<RegExpAST, Text, Index = 0> = RegExpAST extends []
   ? [true, Index]
@@ -303,5 +291,3 @@ export type DebugTest<
 export type Test<RegExp extends string, Text extends string> = DebugTest<RegExp, Text>['isValid']
 
 
-// TODOs:
-// TODO: errors are not propagated down
