@@ -7,7 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "dtslint . --localTs node_modules/typescript/lib --expectOnly"
+    "test": "dtslint . --localTs node_modules/typescript/lib --expectOnly",
+    "ts:check-types": "tsc",
+    "ts:check-types:watch": "tsc --watch"
   },
   "repository": {
     "type": "git",

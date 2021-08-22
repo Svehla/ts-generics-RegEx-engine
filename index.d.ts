@@ -63,6 +63,8 @@ type Add1<T> = IterationMap[T][3]
 // @ts-expect-error
 type Sub1<T> = IterationMap[T][2]
 
+export type Cast<T, U> = T extends U ? T : U
+
 type _Add<T, U, Res = T> = ParseInt<U> extends 0 ? Res : _Add<Add1<T>, Sub1<U>, Add1<Res>>
 
 type _Sub<T, U, Res = T> = ParseInt<U> extends 0 ? Res : _Sub<Sub1<T>, Sub1<U>, Sub1<Res>>
@@ -77,10 +79,12 @@ type Sub<T, U> = ParseInt<_Sub<ParseInt<T>, ParseInt<U>>>
 // ----------------- StdLib -------------------------
 // --------------------------------------------------
 
-// --- Arrays utils
+// --- Arrays utils ---
+
 type Head<T> = T extends [infer FirstItem, ...infer _Rest] ? FirstItem : never
 type Tail<T> = T extends [infer _FirstItem, ...infer Rest] ? Rest : never
 type RemoveLast<T> = T extends [...infer Rest, infer _LastIem] ? Rest : never
+
 type Last<T> = T extends [...infer _Rest, infer Last] ? Last : never
 
 type RemoveFirstsNItems<T, Count> = Count extends 0 ? T : RemoveFirstsNItems<Tail<T>, Sub<Count, 1>>
@@ -103,11 +107,15 @@ type EditLastItemOfLastItemAttr<
   Arr extends any[][],
   Key extends string,
   Value extends any
-> = ReplaceLastItem<Arr, EditLastItemAttr<Last<Arr>, Key, Value>>
+> = ReplaceLastItem<Arr, EditLastItemAttr<Cast<Last<Arr>, any[]>, Key, Value>>
 
-type PushToLastItem<Arr extends any[][], Item> = ReplaceLastItem<Arr, Push<Last<Arr>, Item>>
+type PushToLastItem<
+  Arr extends any[][],
+  Item, 
+> = ReplaceLastItem<Arr, Push<Cast<Last<Arr>, any[]>, Item>>
 
-// --- strings utils
+// --- strings utils ---
+
 type SplitText<T extends string> = T extends ''
   ? []
   : T extends `${infer First}${infer Rest}`
@@ -143,7 +151,7 @@ export type ParseRegExTokens<T /*extends string[]*/, Stack extends any[] = [[]]>
       PushToLastItem<
         Stack,
         // copy last element and update nested key `quantifier`
-        Last<EditLastItemAttr<Last<Stack>, 'quantifier', 'zeroOrMore'>>
+        Last<EditLastItemAttr<Cast<Last<Stack>, any[]>, 'quantifier', 'zeroOrMore'>>
       >
     >
   : Head<T> extends '('
@@ -152,8 +160,7 @@ export type ParseRegExTokens<T /*extends string[]*/, Stack extends any[] = [[]]>
   ? ParseRegExTokens<
       Tail<T>,
       PushToLastItem<
-        // TODO:rename tail into pop???
-        RemoveLast<Stack>,
+        Cast<RemoveLast<Stack>, any[][]>,
         {
           type: 'groupElement'
           states: Last<Stack>
@@ -185,7 +192,7 @@ type ParsedRegEx<T> = ParseRegExTokens<TokenizeString<T>>[0]
 
 // ------------- regex interpreter ----------------
 type ApplyMultipleZeroOrMore<
-  // TODO: rename to Node
+  // TODO: rename `State` to `Node`
   State extends { value: any; type: any; states: any },
   Text extends string[],
   Index extends number,
@@ -207,7 +214,6 @@ type StateMatchesStringAtIndex<
   Text extends string[],
   Index extends number
 > =
-  // Text
   State['type'] extends 'wildcard'
     ? [true, 1]
     : State['type'] extends 'element'
@@ -281,13 +287,10 @@ export type DebugTest<
 > =
   // @ts-expect-error
   Res[0] extends true
-    ? // check if the TestRegExp iterate over whole string
-      // @ts-expect-error
+    ? // @ts-expect-error
       Res[1] extends ParsedText['length']
       ? { isValid: true; log: Res }
       : { isValid: false; errorLog: Res; info: 'string does not match till the end' }
     : { isValid: false; errorLog: Res }
 
 export type Test<RegExp extends string, Text extends string> = DebugTest<RegExp, Text>['isValid']
-
-

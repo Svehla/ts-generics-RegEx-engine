@@ -92,14 +92,10 @@ type DEBUG1 = DebugTest<'a?(b(zz)*c)+(zy)+x', 'bzzzzzzcbcbczyx'>
 
 
 /**
- * Failing tests
- */
-
-/**
  * Partial matches
  */
-// $ExpectType true
+// $ExpectType false
 type T1000 = Test<'h', 'hello'>
 
-// $ExpectType true
+// $ExpectType false
 type FT2 = Test<'.', '44'>
