@@ -12,15 +12,18 @@
  
 This is the first world `RegEx` engine written in pure Typescript types.
 
+
+
+
 Check the working examples!
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/y8prms2crwgmv1f8x0gd.png)
+![preview 1](https://github.com/Svehla/ts-generics-RegEx-engine/blob/main/imgs/preview-1.png)
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/mk7fc7el9gd0wssss0km.png)
+![preview 2](https://github.com/Svehla/ts-generics-RegEx-engine/blob/main/imgs/preview-2.png)
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/ke701al6bah7sbgkp9te.png)
+![preview 3](https://github.com/Svehla/ts-generics-RegEx-engine/blob/main/imgs/preview-3.png)
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/pvwot2lj8ef8gfv5h9ac.png)
+![preview 4](https://github.com/Svehla/ts-generics-RegEx-engine/blob/main/imgs/preview-4.png)
 
 [Github Repo - ts-generics-RegEx-engine](https://github.com/Svehla/ts-generics-RegEx-engine)
 
@@ -57,14 +60,14 @@ Examples:
 type T0 = TokenizeString<'\\(+(ab)+'>
 ```
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/9uh78sfkj4ysaz3i78qb.png)
+![Tokenize 1 preview](https://github.com/Svehla/ts-generics-RegEx-engine/blob/main/imgs/tokenize.png)
 
 
 ```typescript
 type T1 = TokenizeString<'\\(+(a(xy)+(xx)b)+'>
 ```
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/021b13vpyjxji5hmmcko.png)
+![Tokenize 2 preview](https://github.com/Svehla/ts-generics-RegEx-engine/blob/main/imgs/tokenize-2.png)
 
 
 ### 2. Parser
@@ -78,7 +81,7 @@ Examples:
 type T3 = ParsedRegEx<TokenizeString<'\\(+(a(xy)+(xx)b)+'>>
 ```
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/0xd54719gs4nkg66hftf.png)
+![Parser preview](https://github.com/Svehla/ts-generics-RegEx-engine/blob/main/imgs/parser.png)
 
 As you can see, the parser supports nesting of structures (like brackets in brackets in brackets etc...)
 
@@ -129,24 +132,23 @@ The last step is to create a proper "interpreter" `type Test<RegExp, TestString>
 
 Examples:
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/5umw20ejtalgkg7ycce3.png)
+![Alt Text](https://github.com/Svehla/ts-generics-RegEx-engine/blob/main/imgs/interpreter-1.png)
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/0yn2s582680afpldqt03.png)
+![Alt Text](https://github.com/Svehla/ts-generics-RegEx-engine/blob/main/imgs/interpreter-2.png)
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/eln37sewq0c2pxmmbdpc.png)
+![Alt Text](https://github.com/Svehla/ts-generics-RegEx-engine/blob/main/imgs/interpreter-3.png)
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/9o0rnkn6igyw1yow4xbq.png)
+![Alt Text](https://github.com/Svehla/ts-generics-RegEx-engine/blob/main/imgs/interpreter-4.png)
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/j68b3vpw0lukn0kljy38.png)
+![Alt Text](https://github.com/Svehla/ts-generics-RegEx-engine/blob/main/imgs/interpreter-5.png)
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/yks04ob8eirrp7kh37qu.png)
+![Alt Text](https://github.com/Svehla/ts-generics-RegEx-engine/blob/main/imgs/interpreter-6.png)
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/ma5skyxop7s02nnierru.png)
+![Alt Text](https://github.com/Svehla/ts-generics-RegEx-engine/blob/main/imgs/interpreter-7.png)
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/rakc3ufzv1zbdjx6chfn.png)
+![Alt Text](https://github.com/Svehla/ts-generics-RegEx-engine/blob/main/imgs/interpreter-8.png)
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/ezi0p2b4fzc71nle9u0r.png)
-
+![Alt Text](https://github.com/Svehla/ts-generics-RegEx-engine/blob/main/imgs/interpreter-9.png)
 
 And that's it! 🎉 🎉
 
@@ -154,7 +156,7 @@ If you don't believe, you can check the full source code in this GitHub repo: ht
 
 Wait... And what about the real `Javascript` output? Let's check it out!
 
-![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/jskko6pefr28zqd5v50n.png)
+![Zero runtime preview](https://github.com/Svehla/ts-generics-RegEx-engine/blob/main/imgs/zero-runtime.png)
 
 Haha! A few hundreds line of static types and runtime output is empty with `O(0)` time complexity! That's the magic of Typescript 🦄 
 
